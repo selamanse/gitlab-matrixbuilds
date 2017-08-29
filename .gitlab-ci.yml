@@ -1,0 +1,43 @@
+.job_template: &tmpl_deploy_integration
+  stage: deploy
+  environment:
+    name: integration
+  script:
+    - echo "hello i am deployed"
+
+.job_template: &tmpl_deploy_production
+  stage: deploy
+  when: manual
+  environment:
+    name: production
+  script:
+    - echo "hello i am deployed"
+
+test:
+  stage: test
+  script: echo "Running tests"
+
+deploy_integration1:
+  <<: *tmpl_deploy_integration
+  tags:
+    - integration1
+
+deploy_integration2:
+  <<: *tmpl_deploy_integration
+  tags:
+    - integration2
+
+deploy_production1:
+  <<: *tmpl_deploy_production
+  tags:
+    - production1
+
+deploy_production2:
+  <<: *tmpl_deploy_production
+  tags:
+    - production2
+
+deploy_production3:
+  <<: *tmpl_deploy_production
+  tags:
+    - production3

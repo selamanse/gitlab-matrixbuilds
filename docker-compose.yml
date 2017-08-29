@@ -1,0 +1,18 @@
+version: '2'
+services:
+  gitlab-ce:
+    image: gitlab/gitlab-ce:9.4.5-ce.0
+    hostname: gitlab-ce
+    environment:
+      GITLAB_OMNIBUS_CONFIG: "external_url 'http://gitlab-ce:17777'; gitlab_rails['gitlab_shell_ssh_port']=17778;"
+    ports:
+      - "17777:17777"
+      - "17778:22"
+  integration:
+    image: gitlab/gitlab-runner:ubuntu-v9.4.2
+    links:
+      - gitlab-ce
+  production:
+    image: gitlab/gitlab-runner:ubuntu-v9.4.2
+    links:
+      - gitlab-ce

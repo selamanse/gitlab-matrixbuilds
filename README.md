@@ -14,13 +14,9 @@ Identify gitlab-ce docker container ip with:
 
 Note: If you use docker-machine use the IP of the docker vm.
 
-Add running matrixdemo_gitlabce_1 docker container ip to your machines hosts file. For example:
+Add running matrixtest_gitlab-ce_1 container-ip to your machines hosts file. For example:
 
 `echo "172.19.0.2 gitlab-ce" >> /etc/hosts`
-
-
-Run `gitlab-ctl reconfigure` and exit container bash
-
 
 Browse to your gitlab-ce installation via [gitlab-ce:17777](http://gitlab-ce:17777/) and:
 
